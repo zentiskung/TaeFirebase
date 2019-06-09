@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -15,8 +17,44 @@ class _RegisterState extends State<Register> {
       onPressed: () {
         if (formKey.currentState.validate()) {
           formKey.currentState.save();
-          print('Name = $nameString, Email = $emailString, Password = $passwordString');
+          print(
+              'Name = $nameString, Email = $emailString, Password = $passwordString');
+          uploadValueToFirebase();
         }
+      },
+    );
+  }
+
+  void uploadValueToFirebase() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    await firebaseAuth
+        .createUserWithEmailAndPassword(
+            email: emailString, password: passwordString)
+        .then((objValue) {
+      print('Success Regiter');
+    }).catchError((error) {
+      String errorString = error.message;
+      print('Error ===> $errorString');
+      showAlertDialog('Cannot Registerd', errorString);
+    });
+  }
+
+  void showAlertDialog(String titleString, String messageString) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(titleString),
+          content: Text(messageString),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
       },
     );
   }
@@ -56,7 +94,10 @@ class _RegisterState extends State<Register> {
             if (!((value.contains('@')) && (value.contains('.')))) {
               return 'Please Type Email Format';
             }
-          },onSaved: (String value){emailString = value;},
+          },
+          onSaved: (String value) {
+            emailString = value;
+          },
         ),
       ),
     );
@@ -76,7 +117,8 @@ class _RegisterState extends State<Register> {
             if (value.length <= 5) {
               return 'More 6 Charactor';
             }
-          },onSaved: (String value) => passwordString = value,
+          },
+          onSaved: (String value) => passwordString = value,
         ),
       ),
     );

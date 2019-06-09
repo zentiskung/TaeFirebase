@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>376486746693-dn4sl8fd8nfovpe42ob189a7gbv1ihkr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.376486746693-dn4sl8fd8nfovpe42ob189a7gbv1ihkr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>376486746693-tpkjkko3du602ntl14roqfohd80ql8mh.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBTvNELAZimXk8M2yK6qGzSs95fkhHXjUI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>376486746693</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ithanayos.taefirebase</string>
+	<key>PROJECT_ID</key>
+	<string>taefirebase123</string>
+	<key>STORAGE_BUCKET</key>
+	<string>taefirebase123.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:376486746693:ios:b7cec449b96476de</string>
+	<key>DATABASE_URL</key>
+	<string>https://taefirebase123.firebaseio.com</string>
+</dict>
+</plist>

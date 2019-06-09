@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "376486746693",
+    "firebase_url": "https://taefirebase123.firebaseio.com",
+    "project_id": "taefirebase123",
+    "storage_bucket": "taefirebase123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376486746693:android:b7cec449b96476de",
+        "android_client_info": {
+          "package_name": "com.ithanayos.taefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376486746693-tpkjkko3du602ntl14roqfohd80ql8mh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ithanayos.taefirebase",
+            "certificate_hash": "d3a31c5d12f7ad2326ee42beb44c76170ed33959"
+          }
+        },
+        {
+          "client_id": "376486746693-i03ia7qijmclgc82qiqiej8k17r6ebpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBigqDgS6-0xI4LHxWVXX9IiPC8Q6zu8QA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376486746693-i03ia7qijmclgc82qiqiej8k17r6ebpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

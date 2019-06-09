@@ -1,6 +1,8 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
+import 'package:taefirebase/screens/my_service.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _RegisterState extends State<Register> {
   final formKey = GlobalKey<FormState>();
   String nameString, emailString, passwordString;
 
-  Widget uploadButton() {
+  Widget uploadButton(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.cloud_upload),
       onPressed: () {
@@ -27,15 +29,43 @@ class _RegisterState extends State<Register> {
 
   void uploadValueToFirebase() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
     await firebaseAuth
         .createUserWithEmailAndPassword(
             email: emailString, password: passwordString)
         .then((objValue) {
       print('Success Regiter');
+
+      String uidString = objValue.uid.toString();
+      print('uidString ==> $uidString');
+
+      updateDatabase(uidString, context);
     }).catchError((error) {
       String errorString = error.message;
       print('Error ===> $errorString');
       showAlertDialog('Cannot Registerd', errorString);
+    });
+  }
+
+  void updateDatabase(String uidString, BuildContext context) async {
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.instance;
+    Map<String, String> map = Map();
+    map['Email'] = emailString;
+    map['Name'] = nameString;
+    map['Uid'] = uidString;
+
+    await firebaseDatabase
+        .reference()
+        .child('User')
+        .child(uidString)
+        .set(map)
+        .then((objValue) {
+      // Move to MyService
+
+      var serviceRoute =
+          MaterialPageRoute(builder: (BuildContext context) => MyService());
+      Navigator.of(context)
+          .pushAndRemoveUntil(serviceRoute, (Route<dynamic> route) => false);
     });
   }
 
@@ -130,7 +160,7 @@ class _RegisterState extends State<Register> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Register'),
-        actions: <Widget>[uploadButton()],
+        actions: <Widget>[uploadButton(context)],
       ),
       body: Form(
         key: formKey,
